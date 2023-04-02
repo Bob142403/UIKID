@@ -5,7 +5,7 @@
     class="focus:outline-none focus:ring-4 font-medium rounded-lg mr-2 mb-2 inline-flex items-center text-white"
     :disabled="disable"
   >
-    <Icon />
+  <component :is="icon"></component>
     <slot />
   </button>
 </template>
@@ -64,8 +64,7 @@ import { defineAsyncComponent } from 'vue'
 
 const props = defineProps({
   icon: {
-    type: String,
-    default: ''
+    type: Object
   },
   size: {
     type: String,
@@ -86,10 +85,9 @@ const color = useColor()(props.color)
 const classes = computed(() => ({
   [color]: true,
   'cursor-not-allowed': props.disable,
-  [useSize(props.size)]: true
+  [useSize()(props.size)]: true
 }))
 
-const Icon = defineAsyncComponent(() => import(`../components/icons/${props.icon}.vue`))
 
 // props: {
 //   icon: {

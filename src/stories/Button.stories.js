@@ -17,7 +17,6 @@ export default {
       },
       options: ['blue', 'dark', 'light', 'green', 'yellow', 'purple', 'red']
     },
-    icon: ''
   }
 }
 

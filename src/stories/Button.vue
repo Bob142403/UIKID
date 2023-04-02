@@ -5,7 +5,7 @@
     class="focus:outline-none focus:ring-4 font-medium rounded-lg mr-2 mb-2 inline-flex items-center text-white"
     :disabled="disable"
   >
-  <component :is="icon"></component>
+    <component :is="icon"></component>
     <slot />
   </button>
 </template>
@@ -81,13 +81,13 @@ const props = defineProps({
 })
 
 const color = useColor()(props.color)
+const getSize = useSize()(props.size)
 
 const classes = computed(() => ({
   [color]: true,
   'cursor-not-allowed': props.disable,
-  [useSize()(props.size)]: true
+  [getSize]: true
 }))
-
 
 // props: {
 //   icon: {

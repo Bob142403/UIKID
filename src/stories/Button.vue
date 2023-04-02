@@ -80,11 +80,11 @@ const props = defineProps({
   }
 })
 
-const color = useColor()(props.color)
+const getColor = useColor()(props.color)
 const getSize = useSize()(props.size)
 
 const classes = computed(() => ({
-  [color]: true,
+  [getColor]: true,
   'cursor-not-allowed': props.disable,
   [getSize]: true
 }))

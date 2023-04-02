@@ -2,55 +2,123 @@
   <button
     type="button"
     :class="classes"
-    class="focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
-    @click="onClick"
+    class="focus:outline-none focus:ring-4 font-medium rounded-lg mr-2 mb-2 inline-flex items-center text-white"
+    :disabled="disable"
   >
-    Button
+    <Icon />
+    <slot />
   </button>
 </template>
 
-<script>
+<!-- <script>
 import '../index.css'
 import './button.css'
+import { useColor } from '../hooks/useColor'
+import { useSize } from '../hooks/useSize'
 import { reactive, computed } from 'vue'
+import { defineAsyncComponent } from 'vue'
 
 export default {
-  name: 'button',
+  name: 'my-button',
 
   props: {
+    icon: {
+      type: String,
+      default: ''
+    },
     size: {
       type: String,
       validator: function (value) {
-        return ['small', 'medium', 'large'].indexOf(value) !== -1
+        return ['small', 'base', 'large', 'extraLarge'].indexOf(value) !== -1
       }
     },
     color: {
       type: String
+    },
+    disable: {
+      type: Boolean
     }
   },
-
-  emits: ['click'],
-
-  setup(props, { emit }) {
+  setup(props) {
     props = reactive(props)
+    const color = useColor(props.color, true)
     return {
       classes: computed(() => ({
-        'bg-purple-700 hover:bg-purple-800 focus:ring-purple-300 text-white':
-          props.color === 'purple',
-        'text-white bg-red-700 hover:bg-red-800 focus:ring-red-300': props.color === 'red',
-        'text-white bg-green-700 hover:bg-green-800  focus:ring-green-300': props.color === 'green',
-        'text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-yellow-300':
-          props.color === 'yellow',
-        'text-gray-900 bg-white border border-gray-300 hover:bg-gray-100 focus:ring-gray-200':
-          props.color === 'light',
-        'text-white bg-blue-700 hover:bg-blue-800  focus:ring-blue-300': props.color === 'blue',
-        'text-white bg-gray-800 hover:bg-gray-900 focus:ring-gray-300': props.color === 'dark',
-        [`storybook-button--${props.size || 'medium'}`]: true
+        [color]: true,
+        'cursor-not-allowed': props.disable,
+        [useSize(props.size)]: true
       })),
-      onClick() {
-        emit('click')
-      }
+      Icon: defineAsyncComponent(() => import('../components/icons/IconCommunity.vue'))
     }
   }
 }
+</script> -->
+
+<script setup>
+import '../index.css'
+import './button.css'
+import { useColor } from '../hooks/useColor'
+import { useSize } from '../hooks/useSize'
+import { reactive, computed } from 'vue'
+import { defineAsyncComponent } from 'vue'
+
+const props = defineProps({
+  icon: {
+    type: String,
+    default: ''
+  },
+  size: {
+    type: String,
+    validator: function (value) {
+      return ['small', 'base', 'large', 'extraLarge'].indexOf(value) !== -1
+    }
+  },
+  color: {
+    type: String
+  },
+  disable: {
+    type: Boolean
+  }
+})
+
+const color = useColor(props.color, true)
+
+const classes = computed(() => ({
+  [color]: true,
+  'cursor-not-allowed': props.disable,
+  [useSize(props.size)]: true
+}))
+
+const Icon = defineAsyncComponent(() => import(`../components/icons/${props.icon}.vue`))
+
+// props: {
+//   icon: {
+//     type: String,
+//     default: ''
+//   },
+//   size: {
+//     type: String,
+//     validator: function (value) {
+//       return ['small', 'base', 'large', 'extraLarge'].indexOf(value) !== -1
+//     }
+//   },
+//   color: {
+//     type: String
+//   },
+//   disable: {
+//     type: Boolean
+//   }
+// },
+// setup(props) {
+//   props = reactive(props)
+//   const color = useColor(props.color, true)
+//   return {
+//     classes: computed(() => ({
+//       [color]: true,
+//       'cursor-not-allowed': props.disable,
+//       [useSize(props.size)]: true
+//     })),
+//     Icon: defineAsyncComponent(() => import('../components/icons/IconCommunity.vue'))
+//   }
+// }
 </script>

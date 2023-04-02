@@ -81,7 +81,7 @@ const props = defineProps({
   }
 })
 
-const color = useColor(props.color, true)
+const color = useColor()(props.color)
 
 const classes = computed(() => ({
   [color]: true,

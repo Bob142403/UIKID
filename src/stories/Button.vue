@@ -62,7 +62,7 @@ import { useSize } from '../hooks/useSize'
 import { reactive, computed } from 'vue'
 import { defineAsyncComponent } from 'vue'
 
-const props = defineProps({
+const { icon, color, disable, size } = defineProps({
   icon: {
     type: Object
   },
@@ -80,13 +80,13 @@ const props = defineProps({
   }
 })
 
-const getColor = useColor()(props.color)
-const getSize = useSize()(props.size)
+const getColor = useColor()
+const getSize = useSize()
 
 const classes = computed(() => ({
-  [getColor]: true,
-  'cursor-not-allowed': props.disable,
-  [getSize]: true
+  [getColor(color)]: true,
+  'cursor-not-allowed': disable,
+  [getSize(size)]: true
 }))
 
 // props: {

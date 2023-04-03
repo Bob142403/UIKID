@@ -5,7 +5,7 @@
     class="focus:outline-none focus:ring-4 font-medium rounded-lg mr-2 mb-2 inline-flex items-center"
     :disabled="disable"
   >
-    <div class="mr-2">
+    <div class="mr-2" v-if="icon">
       <component :is="icon"></component>
     </div>
     <slot />

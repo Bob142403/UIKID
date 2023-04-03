@@ -13,6 +13,10 @@ export default {
       options: ['blue', 'dark', 'light', 'green', 'yellow', 'purple', 'red']
     },
     title: ''
+  },
+  parameters: {
+    // More on Story layout: https://storybook.js.org/docs/vue/configure/story-layout
+    layout: 'fullscreen'
   }
 }
 
@@ -28,9 +32,9 @@ const Template = (args) => ({
   template: '<NavBar v-bind="args"></NavBar>'
 })
 
-export const NavBar1 = Template.bind({})
+export const Navbar = Template.bind({})
 // More on args: https://storybook.js.org/docs/vue/writing-stories/args
-NavBar1.args = {
+Navbar.args = {
   color: 'blue'
 }
 // длина хук color хук disable icon children

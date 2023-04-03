@@ -42,7 +42,7 @@ export default {
 
   setup(props) {
     props = reactive(props)
-    console.log(['small', 'default', 'medium', 'large'].indexOf(props.size))
+    const getSize = ['small', 'default', 'medium', 'large'].indexOf(props.size)
     return {
       classes: computed(() => ({
         'fill-blue-600': props.color === 'blue',
@@ -52,9 +52,7 @@ export default {
         'fill-yellow-400': props.color === 'yellow',
         'fill-pink-600': props.color === 'pink',
         'fill-purple-600': props.color === 'purple',
-        [`w-${(['small', 'default', 'medium', 'large'].indexOf(props.size) + 2) * 2} h-${
-          (['small', 'default', 'medium', 'large'].indexOf(props.size) + 2) * 2
-        } `]: true
+        [`w-${(getSize + 2) * 2} h-${(getSize + 2) * 2} `]: true
       }))
     }
   }

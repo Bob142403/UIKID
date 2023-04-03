@@ -2,10 +2,12 @@
   <button
     type="button"
     :class="classes"
-    class="focus:outline-none focus:ring-4 font-medium rounded-lg mr-2 mb-2 inline-flex items-center "
+    class="focus:outline-none focus:ring-4 font-medium rounded-lg mr-2 mb-2 inline-flex items-center"
     :disabled="disable"
   >
-    <!-- <component :is="icon"></component> -->
+    <div class="mr-2">
+      <component :is="icon"></component>
+    </div>
     <slot />
   </button>
 </template>
@@ -19,6 +21,9 @@ import { computed } from 'vue'
 import { defineAsyncComponent } from 'vue'
 
 const { icon, color, disable, size } = defineProps({
+  icon: {
+    type: Object
+  },
   size: {
     type: String,
     validator: function (value) {
@@ -41,35 +46,4 @@ const classes = computed(() => ({
   'cursor-not-allowed': disable,
   [getSize(size)]: true
 }))
-
-// props: {
-//   icon: {
-//     type: String,
-//     default: ''
-//   },
-//   size: {
-//     type: String,
-//     validator: function (value) {
-//       return ['small', 'base', 'large', 'extraLarge'].indexOf(value) !== -1
-//     }
-//   },
-//   color: {
-//     type: String
-//   },
-//   disable: {
-//     type: Boolean
-//   }
-// },
-// setup(props) {
-//   props = reactive(props)
-//   const color = useColor(props.color, true)
-//   return {
-//     classes: computed(() => ({
-//       [color]: true,
-//       'cursor-not-allowed': props.disable,
-//       [useSize(props.size)]: true
-//     })),
-//     Icon: defineAsyncComponent(() => import('../components/icons/IconCommunity.vue'))
-//   }
-// }
 </script>

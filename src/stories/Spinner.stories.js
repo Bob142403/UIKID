@@ -22,7 +22,7 @@ export default {
 // More on component templates: https://storybook.js.org/docs/vue/writing-stories/introduction#using-args
 const Template = (args) => ({
   // Components used in your story `template` are defined in the `components` object
-  components: { Spinner },
+  components: { MySpinner },
   // The story's `args` need to be mapped into the template through the `setup()` method
   setup() {
     return { args }

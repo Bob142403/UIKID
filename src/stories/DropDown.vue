@@ -36,6 +36,7 @@
         <a
           href="#"
           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          @click="updateModelValue"
           >Dashboard</a
         >
       </li>
@@ -43,6 +44,7 @@
         <a
           href="#"
           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          @click="updateModelValue"
           >Settings</a
         >
       </li>
@@ -50,6 +52,7 @@
         <a
           href="#"
           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+          @click="updateModelValue"
           >Earnings</a
         >
       </li>
@@ -77,10 +80,7 @@ const { iconPosition, title, color, modelValue } = defineProps({
     type: String
   },
   title: {
-    type: String,
-    validator: function (value) {
-      return ['small', 'base', 'large', 'extraLarge'].indexOf(value) !== -1
-    }
+    type: String
   },
   color: {
     type: String
@@ -89,10 +89,10 @@ const { iconPosition, title, color, modelValue } = defineProps({
     type: String
   }
 })
-defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue'])
 
 function updateModelValue(event) {
-  console.log(event)
+  emit('update:modelValue', event.target.innerHTML)
 }
 
 const getColor = useColor()

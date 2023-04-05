@@ -1,5 +1,5 @@
 <template>
-  <nav class="border-gray-200" :class="classes">
+  <nav class="border-gray-200" :class="getColor(color)">
     <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a class="flex items-center">
         <div class="mr-3">
@@ -61,8 +61,4 @@ const { color, title } = defineProps({
 })
 
 const getColor = useColor()
-
-const classes = computed(() => ({
-  [getColor(color)]: true
-}))
 </script>

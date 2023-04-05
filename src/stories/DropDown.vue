@@ -3,7 +3,7 @@
     id="dropdownDefaultButton"
     data-dropdown-toggle="dropdown"
     class="focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
-    :class="classes"
+    :class="getColor(color)"
     type="button"
   >
     {{ title }}
@@ -93,8 +93,4 @@ function updateModelValue(event) {
 }
 
 const getColor = useColor()
-
-const classes = computed(() => ({
-  [getColor(color)]: true
-}))
 </script>

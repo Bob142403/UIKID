@@ -1,10 +1,14 @@
 <script setup>
+import { ref } from 'vue'
 import IconCommunity from './components/icons/IconCommunity.vue'
 import MyButton from './stories/Button.vue'
-import NavBar from './stories/NavBar.vue'
-const qwe = false
+import DropDown from './stories/DropDown.vue'
+const qwe = ref('')
 </script>
 
-<template></template>
+<template>
+  <drop-down title="Hello" color="blue" v-model="qwe"></drop-down>
+  <button>asdas</button>
+</template>
 
 <style scoped></style>

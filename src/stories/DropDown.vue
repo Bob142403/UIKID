@@ -6,8 +6,9 @@
     :class="classes"
     type="button"
   >
+    {{ title }}
     <svg
-      class="w-4 h-4 mr-2"
+      class="w-4 h-4 ml-2"
       aria-hidden="true"
       fill="none"
       stroke="currentColor"
@@ -21,7 +22,6 @@
         d="M19 9l-7 7-7-7"
       ></path>
     </svg>
-    {{ title }}
   </button>
   <div
     id="dropdown"

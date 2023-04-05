@@ -18,14 +18,15 @@ export default {
 }
 
 const Template = (args) => ({
-  components: { Button },
+  components: { DropDown },
   setup() {
     return { args }
   },
-  template: '<DropDown v-bind="args">Hello</DropDown>'
+  template: '<DropDown v-bind="args"></DropDown>'
 })
 
 export const Drop = Template.bind({})
 Drop.args = {
-  color: 'blue'
+  color: 'blue',
+  title: 'Hello'
 }

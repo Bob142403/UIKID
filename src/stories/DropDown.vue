@@ -6,9 +6,8 @@
     :class="classes"
     type="button"
   >
-    {{ title }}
     <svg
-      class="w-4 h-4 ml-2"
+      class="w-4 h-4 mr-2"
       aria-hidden="true"
       fill="none"
       stroke="currentColor"
@@ -22,8 +21,8 @@
         d="M19 9l-7 7-7-7"
       ></path>
     </svg>
+    {{ title }}
   </button>
-  <!-- Dropdown menu -->
   <div
     id="dropdown"
     class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700"
@@ -31,12 +30,12 @@
     <ul
       class="py-2 text-sm text-gray-700 dark:text-gray-200"
       aria-labelledby="dropdownDefaultButton"
+      @click="updateModelValue"
     >
       <li>
         <a
           href="#"
           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          @click="updateModelValue"
           >Dashboard</a
         >
       </li>
@@ -44,7 +43,6 @@
         <a
           href="#"
           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          @click="updateModelValue"
           >Settings</a
         >
       </li>
@@ -52,7 +50,6 @@
         <a
           href="#"
           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          @click="updateModelValue"
           >Earnings</a
         >
       </li>
@@ -60,7 +57,6 @@
         <a
           href="#"
           class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-          @click="updateModelValue"
           >Sign out</a
         >
       </li>
@@ -73,7 +69,6 @@ import '../index.css'
 import './button.css'
 import { useColor } from '../hooks/useColor'
 import { computed } from 'vue'
-import { defineAsyncComponent } from 'vue'
 
 const { iconPosition, title, color, modelValue } = defineProps({
   iconPosition: {
@@ -92,7 +87,9 @@ const { iconPosition, title, color, modelValue } = defineProps({
 const emit = defineEmits(['update:modelValue'])
 
 function updateModelValue(event) {
-  emit('update:modelValue', event.target.innerHTML)
+  if (event.target.closest('li')) {
+    emit('update:modelValue', event.target.innerHTML)
+  }
 }
 
 const getColor = useColor()

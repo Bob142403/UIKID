@@ -42,7 +42,7 @@ const getColor = useColor()
 const getSize = useSize()
 
 const classes = computed(() => ({
-  [getColor(color)]: true,
+  [getColor(color, true)]: true,
   'cursor-not-allowed': disable,
   [getSize(size)]: true
 }))

@@ -1,4 +1,5 @@
 import NavBar from './NavBar.vue'
+import IconCommunity from '../../components/icons/IconCommunity.vue'
 
 export default {
   title: 'Example/NavBar',
@@ -27,5 +28,6 @@ const Template = (args) => ({
 
 export const Navbar = Template.bind({})
 Navbar.args = {
-  color: 'blue'
+  color: 'blue',
+  icon: IconCommunity
 }

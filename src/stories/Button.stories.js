@@ -29,5 +29,6 @@ const Template = (args) => ({
 export const Primary = Template.bind({})
 Primary.args = {
   color: 'blue',
-  disable: false
+  disable: false,
+  size: 'base'
 }

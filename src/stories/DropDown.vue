@@ -3,7 +3,7 @@
     id="dropdownDefaultButton"
     data-dropdown-toggle="dropdown"
     class="focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center"
-    :class="getColor(color)"
+    :class="getColor(color, true)"
     type="button"
   >
     {{ title }}
@@ -68,7 +68,6 @@
 import '../index.css'
 import './button.css'
 import { useColor } from '../hooks/useColor'
-import { computed } from 'vue'
 
 const { iconPosition, title, color, modelValue } = defineProps({
   iconPosition: {

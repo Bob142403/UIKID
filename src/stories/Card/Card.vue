@@ -1,10 +1,7 @@
 <template>
-  <div
-    class="max-w-sm border border-gray-200 rounded-lg shadow "
-    :class="getColor(color, true)"
-  >
+  <div class="max-w-sm border border-gray-200 rounded-lg shadow" :class="getColor(color, true)">
     <a href="#">
-      <img class="rounded-t-lg" src="/docs/images/blog/image-1.jpg" alt="" />
+      <img class="rounded-t-lg" src="../../assets/image-1.jpg" alt="" />
     </a>
     <div class="p-5">
       <a href="#">

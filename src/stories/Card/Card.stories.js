@@ -3,7 +3,16 @@ import Card from './Card.vue'
 export default {
   title: 'Example/Card',
   component: Card,
-  argTypes: {}
+  argTypes: {
+    title: '',
+    body: '',
+    color: {
+      control: {
+        type: 'select'
+      },
+      options: ['blue', 'dark', 'light', 'green', 'yellow', 'purple', 'red']
+    }
+  }
 }
 
 const Template = (args) => ({
@@ -15,4 +24,7 @@ const Template = (args) => ({
 })
 
 export const Primary = Template.bind({})
-Primary.args = {}
+Primary.args = {
+  title: 'Card Title',
+  body: 'Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.'
+}
